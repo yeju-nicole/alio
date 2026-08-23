@@ -1,0 +1,292 @@
+/* ===== alio — design tokens =====
+   Palette pulled from the physical product: the dusty lavender TPU body
+   and the black-ringed white paper tag. Kept cool, not the warm-cream
+   default — this is a small object you carry, not a lifestyle spread. */
+
+@font-face {
+  font-family: "Charter";
+  src: url("/fonts/charter_regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Charter";
+  src: url("/fonts/charter_italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Charter";
+  src: url("/fonts/charter_bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Charter";
+  src: url("/fonts/charter_bold_italic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --alio-purple: #8c7fc9;
+  --alio-purple-deep: #4d4180;
+  --alio-purple-soft: #eeebf8;
+  --alio-purple-line: #dcd5ef;
+  --alio-paper: #faf9f6;
+  --alio-paper-raised: #ffffff;
+  --alio-ink: #201f29;
+  --alio-ink-soft: #56536b;
+
+  --font-display: "Charter", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-label: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, Helvetica, Arial, sans-serif;
+
+  --max-w: 1120px;
+  --gap-section: clamp(72px, 11vw, 148px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--alio-paper);
+  color: var(--alio-ink);
+  font-family: var(--font-display);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.label {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--alio-ink-soft);
+}
+
+.label--purple {
+  color: var(--alio-purple-deep);
+}
+
+.section {
+  padding: var(--gap-section) 0;
+}
+
+.section--line {
+  border-top: 1px solid var(--alio-purple-line);
+}
+
+.section--soft {
+  background: var(--alio-purple-soft);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5.4vw, 4.2rem);
+  line-height: 1.08;
+}
+
+h2 {
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  line-height: 1.18;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+p {
+  margin: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-label);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 15px 28px;
+  border-radius: 999px;
+  border: 1px solid var(--alio-ink);
+  background: var(--alio-ink);
+  color: var(--alio-paper);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.88;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--alio-purple-deep);
+  outline-offset: 3px;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--alio-ink);
+  border: 1px solid var(--alio-ink);
+}
+
+.btn--purple {
+  background: var(--alio-purple-deep);
+  border-color: var(--alio-purple-deep);
+  color: #fff;
+}
+
+/* ===== coin badge — the recurring signature mark, taken directly
+   from the physical NFC tag on the keyring ===== */
+.coin {
+  --coin-size: 96px;
+  width: var(--coin-size);
+  height: var(--coin-size);
+  border-radius: 50%;
+  border: 1.5px solid var(--alio-ink);
+  background: var(--alio-paper-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  text-align: center;
+  position: relative;
+}
+
+.coin::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--alio-purple-line);
+  border-radius: 50%;
+}
+
+.coin span {
+  position: relative;
+  font-size: calc(var(--coin-size) * 0.28);
+  color: var(--alio-ink);
+}
+
+.coin--purple {
+  border-color: var(--alio-purple-deep);
+  background: var(--alio-purple-deep);
+}
+.coin--purple::before {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.coin--purple span {
+  color: #fff;
+}
+
+/* subtle ribbed texture, echoing the fluted TPU tube — used sparingly */
+.ribbed {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--alio-purple-line) 0px,
+    var(--alio-purple-line) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+}
+
+@media (max-width: 860px) {
+  .hero-grid,
+  .product-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-grid > div:last-child,
+  .product-grid > div:first-child {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --gap-section: clamp(56px, 14vw, 96px);
+  }
+  .nav-eyebrow {
+    display: none;
+  }
+  .nav-links {
+    gap: 16px !important;
+  }
+  .nav-links .label {
+    display: none;
+  }
+  .btn {
+    padding: 12px 18px !important;
+    font-size: 0.72rem !important;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
